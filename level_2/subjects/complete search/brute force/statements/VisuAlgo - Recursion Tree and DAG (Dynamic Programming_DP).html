@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://visualgo.net/en/recursion -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="description" content="This visualization can visualize the recursion tree of a recursive algorithm.But you can also visualize the Directed Acyclic Graph (DAG) of a DP algorithm.">
+<meta name="keywords" content="Recursion Tree DAG Dynamic Programming DP">
+ 
+<meta name="csrf-token" content="sXeDRf9BVoWntQPqhTCkkan6eQjdhghpMmBxXUzX">
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta property="og:image" content="https://visualgo.net/img/png/recursion.png">
+<title>VisuAlgo - Recursion Tree and DAG (Dynamic Programming/DP)</title>
+<link rel="icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="https://visualgo.net/img/favicon.png" type="image/x-icon">
+<link rel="apple-touch-icon" href="https://visualgo.net/img/favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://visualgo.net/img/favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://visualgo.net/img/favicon.png">
+<link rel="stylesheet" type="text/css" href="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/stylesheet.css">
+<link rel="stylesheet" type="text/css" href="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/common.css">
+<link rel="stylesheet" href="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/viz-1.0.1.css">
+<link rel="stylesheet" href="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/visual.css">
+<link rel="stylesheet" href="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/drawgraph.css">
+<style>
+      #e-lecture {
+        top: 45px;
+        right: 130px;
+        width: 400px;
+        display: block;
+        background: none;
+        /*overflow: normal;*/
+        white-space: normal;
+        text-align: right;
+        color: black; font-weight: bold; font-size: 20px;
+      }
+      .electure-prev, .electure-next { /* force update, copied from viz.css */
+        position: absolute;
+        /* bottom: -12px; */
+        top: -20px;
+        /*bottom: '';*/
+        padding: 3px 8px;
+        background: #999;
+        color: white;
+        cursor: pointer;
+        border-radius: 2px;
+      }
+      .electure-prev {
+        left: -10px;
+        /* right: 30px; */
+      }
+      .electure-next {
+        right: -10px;
+        color: white;
+      }
+    </style>
+<style>
+.run { bottom: 60px; }
+  #run-input input {
+    width: 140px;
+    padding: 6px 8px 5px;
+  }
+  #run-go p { padding: 5px 8px; }
+    #run-dp { padding: 5px 8px; }
+  #insert-err { padding: 5px 0px; }
+  
+#error {
+  left: 43px;
+  bottom: 230px;
+  position: relative;
+  color: red;
+}
+
+#run {
+  float: right;
+  padding: 5px 10px;
+}
+
+#run:hover{
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+svg {
+  position: relative;
+  left: 150px;
+}
+  
+#switch-code:hover {
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+#switch-code {
+  font-family: "PT Sans"; 
+  font-size: 13px;
+  padding: 5px 10px;
+  background : grey;
+  color : white;
+}
+</style>
+<script async="" src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/analytics.js"></script><script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/dagre.min.js"></script>
+<script>
+      function changeURL() {
+        var URL = window.location.href.split('/');
+        var val = document.getElementById("Language").value;
+        URL[3] = val;
+        window.location.assign(URL.join('/'));
+      }
+    </script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.997.0" data-gr-ext-installed="" style="zoom: 100%;" data-new-gr-c-s-loaded="14.997.0">
+<div id="top-bar">
+<a href="http://www.comp.nus.edu.sg/~stevenha"><span class="colour" style="border: 1px solid green; border-radius: 25px; color: rgb(254, 197, 21);">7</span></a>&nbsp;&nbsp;&nbsp;
+<a id="home" href="https://visualgo.net/">Visu<span class="colour" style="color: rgb(254, 197, 21);">Algo</span><span style="font-size: 40%">.net</span></a>
+/
+<select id="Language" onchange="changeURL()">
+<option value="en" selected="">en</option>
+<option value="zh">zh</option>
+<option value="es">es</option>
+<option value="pt">pt</option>
+<option value="ru">ru</option>
+<option value="id">id</option>
+<option value="de">de</option>
+<option value="bn">bn</option>
+<option value="ja">ja</option>
+<option value="ko">ko</option>
+<option value="vi">vi</option>
+</select>
+/recursion
+<span class="right-links" id="useraccount" style="background: rgb(254, 197, 21);"><a href="https://visualgo.net/login">Login</a></span>
+<span id="title">
+<a id="title-recursion" class="selected-viz">Recursion Tree</a>
+<a id="title-dp">Recursion DAG (DP)</a>
+</span>
+<div id="mode-menu">
+<div id="mode-button" title="exploration">Exploration Mode ▿</div>
+<div id="other-modes" style="display: none;">
+<a title="e-Lecture">e-Lecture Mode</a>
+</div>
+</div>
+</div>
+<div id="dark-overlay"></div>
+<div id="status" class="panel" style="background-color: rgb(75, 101, 186);"><p></p></div>
+<div id="status-hide" class="panel-hide" style="background-color: rgb(75, 101, 186);"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/arrow_white_right.png" alt="&gt;" title="show/hide status panel"></div>
+<div id="codetrace" class="panel" style="background-color: rgb(214, 87, 117); width: 0px;">
+<p id="code1" style="padding-top: 10px; background-color: rgb(214, 87, 117); color: rgb(255, 255, 255);"></p>
+<p id="code2" style="background-color: rgb(214, 87, 117); color: rgb(255, 255, 255);"></p>
+<p id="code3" style="background-color: rgb(214, 87, 117); color: rgb(255, 255, 255);"></p>
+<p id="code4" style="background-color: rgb(214, 87, 117); color: rgb(255, 255, 255);"></p>
+<p id="code5" style="background-color: rgb(214, 87, 117); color: rgb(255, 255, 255);"></p>
+<p id="code6" style="background-color: rgb(214, 87, 117); color: rgb(255, 255, 255);"></p>
+<p id="code7" style="padding-bottom: 10px; background-color: rgb(214, 87, 117); color: rgb(255, 255, 255);"></p>
+</div>
+<div id="codetrace-hide" class="panel-hide" style="background-color: rgb(214, 87, 117);"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/arrow_white_right.png" alt="&gt;" title="show/hide codetrace panel" class="rotateLeft"></div>
+<div id="left-bar"></div>
+<div id="right-bar"></div>
+<div id="media-controls">
+<div id="speed-control">slow<div id="speed-input" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 72.2222%;"></span></div>fast</div>
+<span id="go-to-beginning" class="media-control-button" title="go to beginning" onclick="goToBeginning()"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/goToBeginning.png" alt="go to beginning"></span>
+<span id="previous" class="media-control-button" title="step backward" onclick="stepBackward()"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/prevFrame.png" alt="previous frame"></span>
+<span id="pause" class="media-control-button" title="pause" onclick="pause()" style="display: none;"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/pause.png" alt="pause"></span>
+<span id="play" class="media-control-button" title="play" onclick="play()" style=""><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/replay.png" alt="replay" title="replay"></span>
+<span id="next" class="media-control-button" title="step forward" onclick="stepForward()"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/nextFrame.png" alt="next frame"></span>
+<span id="go-to-end" class="media-control-button" title="go to end" onclick="goToEnd()"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/goToEnd.png" alt="go to end"></span>
+<div id="progress-bar" class="media-control-button ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"><div class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min" style="width: 100%; background-color: rgb(254, 197, 21);"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span></div>
+</div>
+<div id="viz"><svg width="1000" height="600"><g id="polygon"></g><g id="edge"><path id="e0" class="de" d="M487.1430849064841,59.5236408100118L287.85691509351597,207.14302585665484" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e1" class="de" d="M266.9873194034635,230.51574424092726L186.58410916796504,369.48425575907277" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e2" class="de" d="M283.0126805965365,230.51574424092726L363.41589083203496,369.48425575907277" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e3" class="de" d="M365.6706183369516,398.2613598671624L312.9008102344769,535.0719734661709" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e4" class="de" d="M377.1865245201912,398.2613598671624L429.95633262266585,535.0719734661709" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e5" class="de" d="M512.8569150935159,59.5236408100118L712.1430849064841,207.14302585665484" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e6" class="de" d="M716.9873194034635,230.51574424092726L636.584109167965,369.48425575907277" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e7" class="de" d="M622.8134754798087,398.2613598671624L570.043667377334,535.0719734661709" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e8" class="de" d="M634.3293816630484,398.2613598671624L687.0991897655231,535.0719734661709" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path><path id="e9" class="de" d="M733.0126805965365,230.51574424092726L813.4158908320348,369.48425575907277" stroke="#333333" stroke-width="3" style="marker-end: url(&quot;#arrow&quot;);"></path></g><g id="vertex"><circle class="v0" cx="500" cy="50" x="484" y="34" fill="#333333" r="16" stroke="#333333" stroke-width="2" height="32" width="32"></circle><circle class="v0" cx="500" cy="50" x="485" y="35" fill="#eeeeee" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v1" cx="275" cy="216.66666666666666" x="259" y="200.66666666666666" fill="#333333" r="16" stroke="#333333" stroke-width="2" height="32" width="32"></circle><circle class="v1" cx="275" cy="216.66666666666666" x="260" y="201.66666666666666" fill="#eeeeee" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v2" cx="178.57142857142856" cy="383.3333333333333" x="162.57142857142856" y="367.3333333333333" fill="#52bc69" r="16" stroke="#52bc69" stroke-width="2" height="32" width="32"></circle><circle class="v2" cx="178.57142857142856" cy="383.3333333333333" x="163.57142857142856" y="368.3333333333333" fill="#52bc69" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v3" cx="371.4285714285714" cy="383.3333333333333" x="355.4285714285714" y="367.3333333333333" fill="#333333" r="16" stroke="#333333" stroke-width="2" height="32" width="32"></circle><circle class="v3" cx="371.4285714285714" cy="383.3333333333333" x="356.4285714285714" y="368.3333333333333" fill="#eeeeee" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v4" cx="307.1428571428571" cy="550" x="291.1428571428571" y="534" fill="#52bc69" r="16" stroke="#52bc69" stroke-width="2" height="32" width="32"></circle><circle class="v4" cx="307.1428571428571" cy="550" x="292.1428571428571" y="535" fill="#52bc69" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v5" cx="435.71428571428567" cy="550" x="419.71428571428567" y="534" fill="#52bc69" r="16" stroke="#52bc69" stroke-width="2" height="32" width="32"></circle><circle class="v5" cx="435.71428571428567" cy="550" x="420.71428571428567" y="535" fill="#52bc69" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v6" cx="725" cy="216.66666666666666" x="709" y="200.66666666666666" fill="#333333" r="16" stroke="#333333" stroke-width="2" height="32" width="32"></circle><circle class="v6" cx="725" cy="216.66666666666666" x="710" y="201.66666666666666" fill="#eeeeee" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v7" cx="628.5714285714286" cy="383.3333333333333" x="612.5714285714286" y="367.3333333333333" fill="#2ebbd1" r="16" stroke="#2ebbd1" stroke-width="2" height="32" width="32"></circle><circle class="v7" cx="628.5714285714286" cy="383.3333333333333" x="613.5714285714286" y="368.3333333333333" fill="#2ebbd1" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v8" cx="564.2857142857142" cy="550" x="548.2857142857142" y="534" fill="#52bc69" r="16" stroke="#52bc69" stroke-width="2" height="32" width="32"></circle><circle class="v8" cx="564.2857142857142" cy="550" x="549.2857142857142" y="535" fill="#52bc69" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v9" cx="692.8571428571429" cy="550" x="676.8571428571429" y="534" fill="#52bc69" r="16" stroke="#52bc69" stroke-width="2" height="32" width="32"></circle><circle class="v9" cx="692.8571428571429" cy="550" x="677.8571428571429" y="535" fill="#52bc69" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle><circle class="v10" cx="821.4285714285713" cy="383.3333333333333" x="805.4285714285713" y="367.3333333333333" fill="#52bc69" r="16" stroke="#52bc69" stroke-width="2" height="32" width="32"></circle><circle class="v10" cx="821.4285714285713" cy="383.3333333333333" x="806.4285714285713" y="368.3333333333333" fill="#52bc69" r="14" width="30" height="30" stroke="#fff" stroke-width="0"></circle></g><g id="vertexText"><text class="v0" x="500" y="55.333333333333336" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">4,2</text><text class="v0" x="500" y="81.33333333333334" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">6</text><text class="v1" x="275" y="222" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">3,1</text><text class="v1" x="275" y="248" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3</text><text class="v2" x="178.57142857142856" y="388.66666666666663" fill="#ffffff" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">2,0</text><text class="v2" x="178.57142857142856" y="414.66666666666663" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1</text><text class="v3" x="371.4285714285714" y="388.3333333333333" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">2,1</text><text class="v3" x="371.4285714285714" y="414.3333333333333" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2</text><text class="v4" x="307.1428571428571" y="555" fill="#ffffff" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">1,0</text><text class="v4" x="307.1428571428571" y="581" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1</text><text class="v5" x="435.71428571428567" y="555" fill="#ffffff" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">1,1</text><text class="v5" x="435.71428571428567" y="581" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1</text><text class="v6" x="725" y="221.66666666666666" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">3,2</text><text class="v6" x="725" y="247.66666666666666" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">3</text><text class="v7" x="628.5714285714286" y="388.3333333333333" fill="#ffffff" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">2,1</text><text class="v7" x="628.5714285714286" y="414.3333333333333" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">2</text><text class="v8" x="564.2857142857142" y="555" fill="#ffffff" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">1,0</text><text class="v8" x="564.2857142857142" y="581" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1</text><text class="v9" x="692.8571428571429" y="555" fill="#ffffff" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">1,1</text><text class="v9" x="692.8571428571429" y="581" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1</text><text class="v10" x="821.4285714285713" y="388.3333333333333" fill="#ffffff" font-family="&#39;PT Sans&#39;, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">2,2</text><text class="v10" x="821.4285714285713" y="414.3333333333333" fill="red" font-family="&#39;PT Sans&#39;, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">1</text></g><g id="edgeWeight"><text id="ew0" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e0" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew1" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e1" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew2" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e2" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew3" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e3" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew4" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e4" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew5" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e5" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew6" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e6" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew7" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e7" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew8" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e8" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text><text id="ew9" fill="#333333" font-family="&#39;PT Sans&#39;, sans-serif" font-size="0" font-weight="bold" text-anchor="middle" text-decoration="underline"><textpath href="#e9" startOffset="75%"><tspan dy="-5">1</tspan></textpath></text></g><g id="edgeWeightPath"></g><g id="marker"><marker id="arrow" viewBox="0 -5 10 10" refX="9" markerWidth="3" markerHeight="3" orient="auto"><path d="M0,-5 L10,0 L0,5" fill="#333"></path></marker><marker id="backwardArrow" viewBox="-10 -5 10 10" refX="-9" markerWidth="3" markerHeight="3" orient="auto"><path d="M0,-5 L-10,0 L0,5" fill="#333"></path></marker></g></svg></div>
+<div id="current-action" class="panel" style="display: none;"></div>
+<div id="e-lecture" class="panel"></div>
+<div id="overlay" hidden="" style="opacity: 0; display: none;"></div>
+<div id="dropdown-temp-holder" hidden=""><div id="electure-dropdown">
+<select class="lecture-dropdown" style="width:100%">
+<option value="1">1. Visualization</option>
+<option value="2">2. Recursion Tree/DAG</option>
+<option value="3">3. Examples</option>
+<option value="4">4. Factorial Example</option>
+<option value="5">5. Fibonacci example</option>
+<option value="6">6. Catalan example</option>
+<option value="7">7. GCD example</option>
+<option value="8">8. N Choose K</option>
+<option value="9">9. Range Sum Query example</option>
+<option value="10">10. Knapsack example</option>
+<option value="11">11. Coin Change example</option>
+<option value="12">12. Longest Increasing Subsequence example</option>
+<option value="13">13. Traveling Salesman example</option>
+<option value="14">14. Matching problem</option>
+</select>
+</div></div>
+<div id="electure-1" class="electure-dialog" style="top: 60px; left: 60px; width: 500px; display: none;">
+<p>This visualization can visualize the recursion tree of a recursive algorithm.<br>But you can also visualize the Directed Acyclic Graph (DAG) of a DP algorithm.</p>
+<hr>
+<p><b>Remarks</b>: By default, we show e-Lecture Mode for first time (or non logged-in) visitor.<br>
+Please <a href="https://visualgo.net/login"><u>login</u></a> if you are a repeated visitor or <a href="https://visualgo.net/login"><u>register</u></a> for an (optional) free account first.</p>
+
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-next" data-nextid="2" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-2" class="electure-dialog" style="top: 270px; left: 50%; margin-left: -200px; width: 400px; display: none;">
+<p>This is the Recursion Tree/DAG visualization area.<br>Note that due to combinatorial explosion, it will be very hard to visualize Recursion Tree for large instances.<br>And for Recursion DAG, it will also very hard to minimize the number of edge crossings in the event of overlapping subproblems.</p>
+<hr>
+<p>Pro-tip: Since you are not <a href="https://visualgo.net/login"><u>logged-in</u></a>, you may be a first time visitor who are not aware of the following keyboard shortcuts to navigate this e-Lecture mode: <b>[PageDown]</b> to advance to the next slide, <b>[PageUp]</b> to go back to the previous slide, <b>[Esc]</b> to toggle between this e-Lecture mode and exploration mode.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="1" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="3" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-3" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>Select one of the examples, or write your own code.<br>Note that the visualization can run <i>any</i> javascript code, including malicious code, so please be careful.<br>Click the 'Run' button to start the visualization after you have selected or written a valid JavaScript code!</p>
+<hr>
+<p>Another pro-tip: We designed this visualization and this e-Lecture mode to look good on 1366x768 resolution <b>or larger</b> (typical modern laptop resolution in 2017). We recommend using Google Chrome to access VisuAlgo. Go to full screen mode (<b>F11</b>) to enjoy this setup. However, you can use zoom-in (<b>Ctrl +</b>) or zoom-out (<b>Ctrl -</b>) to calibrate this.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="2" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="4" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-4" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Factorial example computes the factorial of a number <b>N</b>.<br>It is one of the simplest (tail) recursive function that can actually be rewritten into iterative version.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="3" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="5" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-5" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Fibonacci example computes the <b>N</b>-th Fibonacci number.<br>Unlike Factorial example, this time each recursive step recurses to two other smaller sub-problems. It can still be written in iterative fashion after one understands the concept of Dynamic Programming. Fibonacci recursion tree (and DAG) are frequently used to showcase the basic idea of recursion.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="4" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="6" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-6" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Catalan example computes the <b>N</b>-th catalan number recursively.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="5" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="7" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-7" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The GCD example computes the Greatest Common Divisor of two numbers <b>A</b> and <b>B</b> recursively.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="6" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+ <div class="electure-next" data-nextid="8" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-8" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The N Choose K computes the binomial coefficient C(<b>N</b>, <b>K</b>).</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="7" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="9" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-9" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Range Sum Query example computes the maximum value of S(l,r), where S(l,r) = a1[l] + a1[l+1] + ... + a1[r], where 1≤l≤r≤i.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="8" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="10" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-10" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Knapsack example solves the <a href="https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem" target="_blank"><u>0/1 Knapsack Problem</u></a>: What is the maximum value that we can get, given a knapsack that can hold a maximum weight of w, where the value of the i-th item is a1[i], the weight of the i-th item is a2[i]?</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="9" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="11" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-11" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Coin Change example solves the <a href="https://en.wikipedia.org/wiki/Change-making_problem" target="_blank"><u>Coin Change problem</u></a>: Given a list of coin values in a1, what is the minimum number of coins needed to get the value v?</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="10" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="12" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-12" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Longest Increasing Subsequence example solves the <a href="https://en.wikipedia.org/wiki/Longest_increasing_subsequence" target="_blank"><u>Longest Increasing Subsequence</u></a> problem: Given an array a1, how long is the Longest Increasing Subsequnce of the array?</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="11" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="13" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-13" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Traveling Salesman example solves the <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem"><u>Traveling Salesman Problem</u></a> on small graph: How long is the shortest path that goes from city 0, passes through every city once, and goes back again to 0? The distance between city i and city j is denoted by a1[i][j].</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="12" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+<div class="electure-next" data-nextid="14" style="background-color: rgb(254, 197, 21);">Next <u>PgDn</u></div>
+</div>
+<div id="electure-14" class="electure-dialog" style="bottom: 300px; left: 60px; width: 300px; display: none;">
+<p>The Matching problem computes the maximum number of <a href="https://en.wikipedia.org/wiki/Matching_(graph_theory)"><u>matching</u></a> on a small graph, which is given in the adjacency matrix a1.</p>
+<div class="electure-end" style="background-color: rgb(254, 197, 21);">X <u>Esc</u></div>
+<div class="electure-prev" data-nextid="13" style="background-color: rgb(254, 197, 21);">Prev <u>PgUp</u></div>
+</div>
+<div id="popup" hidden="">
+<div id="popup-content"></div>
+<span id="hide-popup" hidden="" style="background-color: rgb(254, 197, 21);">X <u>Close</u></span>
+</div>
+<div id="error"></div>
+<div id="actions" class="panel" style="height: 210px; width: 355px; background-color: rgb(46, 187, 209);"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
+<div id="code-area">
+function f(<input type="text" id="arguments_textBox" size="10">){
+<select id="codeExample">
+
+<option id="Factorial" value="Factorial">Factorial Numbers</option>
+<option id="Fibonacci" value="Fibonacci" selected="selected">Fibonacci Numbers</option>
+<option id="Catalan" value="Catalan">Catalan Numbers</option>
+<option id="ModuloFunction" value="ModuloFunction">GCD(a, b)</option>
+<option id="NCK" value="NCK">N Choose K</option>
+<option id="RangeSumQuery" value="RangeSumQuery">Range Sum Query</option>
+
+<option id="Knapsack" value="Knapsack">0-1 Knapsack</option>
+<option id="CoinChange" value="CoinChange">Coin Change</option>
+<option id="LongestIncreasingSubsequence" value="LongestIncreasingSubsequence">Longest Inc Subseq</option>
+
+<option id="TravelingSalesman" value="TravelingSalesman">Traveling Salesman</option>
+<option id="Matching" value="Matching">Matching</option>
+<option id="CustomCode" value="CustomCode">Custom Code</option>
+</select>
+<div id="run" onclick="go()"> Run</div>
+<br>
+<textarea id="code" rows="9" cols="45" spellcheck="false"></textarea>}
+</div>
+<div id="array-area">
+var a1 = <input type="text" id="variable1_textBox" size="39" value="">
+<br>
+var a2 = <input type="text" id="variable2_textBox" size="39" value="">
+</div>
+<br>
+</div>
+<div id="actions-hide" class="panel-hide" style="background-color: rgb(46, 187, 209); padding-top: 97px; padding-bottom: 97px;"><img src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/arrow_white_right.png" alt="&gt;" title="show/hide actions panel" class="rotateRight"></div>
+<div id="actions-extras">
+<div class="run action-menu-pullout" style="left: 398px;">
+<div id="run-input" class="new-menu-option" style="float: left;"><input type="text" id="n_input" title="Enter the arguments of the function, separated by comma." autocomplete="off" value="20"></div>
+<div id="run-go" class="execAction coloured-menu-option" onclick="go()" style="float: left; background-color: rgb(46, 187, 209); color: rgb(255, 255, 255);"><p>GO</p></div>
+</div>
+</div>
+<div id="bottom-bar">
+<a id="trigger-about">About</a>
+<a id="trigger-team">Team</a>
+<a id="trigger-terms">Terms of use</a>
+</div>
+<div id="about" class="overlays">
+<h4 style="background-color: rgb(254, 197, 21);">About</h4><span class="close-overlay">✕</span>
+<div class="content">
+<p>VisuAlgo was conceptualised in 2011 by Dr Steven Halim as a tool to help his students better understand data structures and algorithms, by allowing them to learn the basics on their own and at their own pace.</p><p>VisuAlgo contains many advanced algorithms that are discussed in Dr Steven Halim's book ('Competitive Programming', co-authored with his brother Dr Felix Halim) and beyond. Today, some of these advanced algorithms visualization/animation can only be found in VisuAlgo.</p><p>Though specifically designed for National University of Singapore (NUS) students taking various data structure and algorithm classes (e.g. CS1010, CS1020, CS2010, CS2020, CS3230, and CS3230), as advocators of online learning, we hope that curious minds around the world will find these visualisations useful too.</p><p>VisuAlgo is not designed to work well on small touch screens (e.g. smartphones) from the outset due to the need to cater for many complex algorithm visualizations that require lots of pixels and click-and-drag gestures for interaction. The minimum screen resolution for a respectable user experience is 1024x768 and only the landing page is relatively mobile-friendly.</p><p>VisuAlgo is an ongoing project and more complex visualisations are still being developed.</p><p>The most exciting development is the automated question generator and verifier (the online quiz system) that allows students to test their knowledge of basic data structures and algorithms. The questions are randomly generated via some rules and students' answers are instantly and automatically graded upon submission to our grading server. This online quiz system, when it is adopted by more CS instructors worldwide, should technically eliminate manual basic data structure and algorithm questions from typical Computer Science examinations in many Universities. By setting a small (but non-zero) weightage on passing the online quiz, a CS instructor can (significantly) increase his/her students mastery on these basic questions as the students have virtually infinite number of training questions that can be verified instantly before they take the online quiz. The training mode currently contains questions for 12 visualization modules. We will soon add the remaining 8 visualization modules so that every visualization module in VisuAlgo have online quiz component.</p><p>Another active branch of development is the internationalization sub-project of VisuAlgo. We want to prepare a database of CS terminologies for all English text that ever appear in VisuAlgo system. This is a big task and requires crowdsourcing. Once the system is ready, we will invite VisuAlgo visitors to contribute, especially if you are not a native English speaker. Currently, we have also written public notes about VisuAlgo in various languages:
+<a href="https://weibo.com/p/230418436e9ee80102v4rk" target="_blank"><u>zh</u></a>, <a href="https://www.facebook.com/notes/steven-halim/httpidvisualgonet-visualisasi-struktur-data-dan-algoritma-dengan-animasi/10153236934439689" target="_blank"><u>id</u></a>, <a href="https://blog.naver.com/visualgo_nus" target="_blank"><u>kr</u></a>, <a href="https://www.facebook.com/groups/163215593699283/permalink/824003417620494/" target="_blank"><u>vn</u></a>, <a href="http://pantip.com/topic/32736343" target="_blank"><u>th</u></a>.</p>
+</div>
+</div>
+<div id="team" class="overlays">
+<h4 style="background-color: rgb(254, 197, 21);">Team</h4><span class="close-overlay">✕</span>
+<div class="content">
+<p>
+<strong><span style="line-height: 150%;">Project Leader &amp; Advisor (Jul 2011-present)</span></strong><br>
+<a href="http://www.comp.nus.edu.sg/~stevenha/" target="_blank">Dr Steven Halim</a>, Senior Lecturer, School of Computing (SoC), National University of Singapore (NUS)<br>
+<a href="http://felix-halim.net/" target="_blank">Dr Felix Halim</a>, Software Engineer, Google (Mountain View)
+</p>
+<p>
+<strong><span style="line-height: 150%;">Undergraduate Student Researchers 1 (Jul 2011-Apr 2012)</span></strong><br>
+Koh Zi Chun, <a href="http://roticv.rantx.com/" target="_blank">Victor Loh Bo Huai</a>
+</p>
+<p>
+<strong><span style="line-height: 150%;">Final Year Project/UROP students 1 (Jul 2012-Dec 2013)</span></strong><br>
+Phan Thi Quynh Trang, Peter Phandi, Albert Millardo Tjindradinata, Nguyen Hoang Duy
+</p>
+<p>
+<strong><span style="line-height: 150%;">Final Year Project/UROP students 2 (Jun 2013-Apr 2014)</span></strong><br>
+<a href="http://www.rosemarietan.com/" target="_blank">Rose Marie Tan Zhao Yun</a>, Ivan Reinaldo
+</p>
+<p>
+<strong><span style="line-height: 150%;">Undergraduate Student Researchers 2 (May 2014-Jul 2014)</span></strong><br>
+Jonathan Irvin Gunawan, Nathan Azaria, Ian Leow Tze Wei, Nguyen Viet Dung, Nguyen Khac Tung, Steven Kester Yuwono, Cao Shengze, Mohan Jishnu
+</p>
+<p>
+<strong><span style="line-height: 150%;">Final Year Project/UROP students 3 (Jun 2014-Apr 2015)</span></strong><br>
+Erin Teo Yi Ling, Wang Zi
+</p>
+<p>
+<strong><span style="line-height: 150%;">Final Year Project/UROP students 4 (Jun 2016-Dec 2017)</span></strong><br>
+Truong Ngoc Khanh, John Kevin Tjahjadi, Gabriella Michelle, Muhammad Rais Fathin Mudzakir
+</p>
+<p>
+List of translators who have contributed ≥100 translations can be found at <a href="https://visualgo.net/statistics">statistics</a> page.
+</p>
+<p>
+<strong><span style="line-height: 150%;">Acknowledgements</span></strong><br>
+This project is made possible by the generous <a href="http://www.cdtl.nus.edu.sg/teg/" target="_blank">Teaching Enhancement Grant</a> from NUS Centre for Development of Teaching and Learning (CDTL).
+</p>
+</div>
+</div>
+<div id="termsofuse" class="overlays">
+<h4 style="background-color: rgb(254, 197, 21);">Terms of use</h4><span class="close-overlay">✕</span>
+<div class="content">
+<p>VisuAlgo is free of charge for Computer Science community on earth. If you like VisuAlgo, the only payment that we ask of you is for you to <b>tell the existence of VisuAlgo to other Computer Science students/instructors</b> that you know =) via Facebook, Twitter, course webpage, blog review, email, etc.</p> <p>If you are a data structure and algorithm <b>student/instructor</b>, you are allowed to use this website directly for your classes. If you take screen shots (videos) from this website, you can use the screen shots (videos) elsewhere as long as you cite the URL of this website (http://visualgo.net) and/or list of publications below as reference. However, you are <b>NOT</b> allowed to download VisuAlgo (client-side) files and <b>host it</b> on your own website as it is <b>plagiarism</b>. As of now, we do <b>NOT</b> allow other people to fork this project and create variants of VisuAlgo. Using the offline copy of (client-side) VisuAlgo for your personal usage is fine.</p> <p>Note that VisuAlgo's online quiz component is by nature has heavy server-side component and there is no easy way to save the server-side scripts and databases locally. Currently, the general public can only use the 'training mode' to access these online quiz system. Currently the 'test mode' is a more controlled environment for using these randomly generated questions and automatic verification for a <b>real</b> examination in NUS. Other interested CS instructor should contact Steven if you want to try such 'test mode'.</p> <p><strong><span style="line-height: 200%;">List of Publications</span></strong></p> <p>This work has been presented briefly at the CLI Workshop at the ACM ICPC World Finals 2012 (Poland, Warsaw) and at the IOI Conference at IOI 2012 (Sirmione-Montichiari, Italy). You can click <a href="http://www.ioinformatics.org/oi/shtm/INFOL099.shtml" target="_blank">this link</a> to read our 2012 paper about this system (it was not yet called VisuAlgo back in 2012).</p><p>This work is done mostly by my past students. The most recent final reports are here: <a href="https://visualgo.net/en/fyp/erin-report.pdf" target="_blank">Erin</a>, <a href="https://visualgo.net/en/fyp/wangzi-report.pdf" target="_blank">Wang Zi</a>, <a href="https://visualgo.net/en/fyp/rose-report.pdf" target="_blank">Rose</a>, <a href="https://visualgo.net/en/fyp/ivan-report.pdf" target="_blank">Ivan</a>.</p> <p><strong><span style="line-height: 200%;">Bug Reports or Request for New Features</span></strong></p> <p>VisuAlgo is not a finished project. Dr Steven Halim is still actively improving VisuAlgo. If you are using VisuAlgo and spot a bug in any of our visualization page/online quiz tool or if you want to request for new features, please contact Dr Steven Halim. His contact is the concatenation of his name and add gmail dot com.</p>
+</div>
+</div>
+
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/jquery-3.3.1.min.js"></script>
+<script>
+      var PHP_DOMAIN = "";
+
+      // surprise colour!
+      // Referenced to in  home.js and viz.js also
+      var colourArray = ["#52bc69", "#d65775"/*"#ed5a7d"*/, "#2ebbd1", "#d9513c", "#fec515", "#4b65ba", "#ff8a27", "#a7d41e"]; // green, pink, blue, red, yellow, indigo, orange, lime
+
+      function disableScroll() { $('html').css('overflow', 'hidden'); }
+
+      function enableScroll() { $('html').css('overflow', 'visible'); }
+
+      function replaceAll(find, replace, str) { return str.replace(new RegExp(find, 'g'), replace); }
+
+      function getColours() {
+        var generatedColours = new Array();
+        while (generatedColours.length < 4) {
+          var n = (Math.floor(Math.random() * colourArray.length));
+          if ($.inArray(n, generatedColours) == -1)
+            generatedColours.push(n);
+        }
+        return generatedColours;
+      }
+
+      function isOn(value, position) {
+        return (value>>position) & 1 === 1;
+      }
+
+      function customAlert(msg) {
+        $('#custom-alert p').html(msg);
+        var m = -1 * ($('#custom-alert').outerHeight()/2);
+        $('#custom-alert').css('margin-top', m+'px');
+        $('#dark-overlay').fadeIn(function() {
+          $('#custom-alert').fadeIn(function() {
+            setTimeout(function() {
+              $('#custom-alert').fadeOut(function() {
+                $('#dark-overlay').fadeOut();
+              });
+            }, 1000);
+          });
+        });
+      }
+
+      function showLoadingScreen() {
+        $('#loading-overlay').show();
+        $('#loading-message').show();
+      }
+
+      function hideLoadingScreen() {
+        $('#loading-overlay').hide();
+      }
+
+      function commonAction(retval, msg) {
+        //setTimeout(function() {
+          if (retval) { // mode == "exploration" && // now not only for exploration mode, but check if this opens other problems
+            $('#current-action').show();
+            $('#current-action').html(mode == "exploration" ? msg : ("e-Lecture Example (auto play until done)<br>" + msg));
+            $('#progress-bar').slider("option", "max", gw.getTotalIteration()-1);
+            triggerRightPanels();
+            isPlaying = true;
+          }
+        //}, 500);
+      }
+
+      function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (decodeURIComponent(pair[0]) == variable)
+            return decodeURIComponent(pair[1]);
+        }
+        return "";
+      }
+
+      var generatedColours = getColours();
+      var surpriseColour = colourArray[generatedColours[0]];
+      var colourTheSecond = colourArray[generatedColours[1]];
+      var colourTheThird = colourArray[generatedColours[2]];
+      var colourTheFourth = colourArray[generatedColours[3]];
+
+      $(function() {
+        $('.links').css('background', surpriseColour);
+        $('.right-links').css('background', surpriseColour);
+        $('#login-go').css('background', surpriseColour);
+
+        $('.colour').css("color", surpriseColour); // name
+        $('h4').css("background-color", surpriseColour); // about, contact us etc. button background
+
+        // title
+        $('#title a').click(function() {
+          $('#title a').removeClass('selected-viz');
+          $(this).addClass('selected-viz');
+          // temporary quick fix for Google Chrome Aug 2016 issue...
+          setTimeout(function(){ document.body.style.zoom = "100.1%"; }, 100); // force resize/redraw...
+          setTimeout(function(){ document.body.style.zoom = "100%"; }, 600);
+        });
+
+        // overlays stuffs
+        $('#trigger-about').click(function() {
+          if ($(window).width() > 600) {
+            $('#dark-overlay').fadeIn(function() {
+              $('#about').fadeIn();
+            });
+          }
+          else
+            alert('Sorry, this dialog is too big. Please load it on bigger screen');
+        });
+
+        $('#trigger-team').click(function() {
+          if ($(window).width() > 600) {
+            $('#dark-overlay').fadeIn(function() {
+              $('#team').fadeIn();
+            });
+          }
+          else
+            alert('Sorry, this dialog is too big. Please load it on bigger screen');
+        });
+
+        $('#trigger-terms').click(function() {
+          if ($(window).width() > 600) {
+            $('#dark-overlay').fadeIn(function() {
+              $('#termsofuse').fadeIn();
+            });
+          }
+          else
+            alert('Sorry, this dialog is too big. Please load it on bigger screen');
+        });
+
+        $('.close-overlay').click(function() {
+          $('.overlays').fadeOut(function() {
+            $('#dark-overlay').fadeOut();
+          });
+        });
+
+        $('#dark-overlay').click(function() {
+          $('.overlays').fadeOut();
+          $('#dark-overlay').fadeOut();
+        });
+
+        $.get('/isloggedin', function(data) {
+          var isLoggedIn = data['isloggedin'] == '1';
+          var element;
+          if (isLoggedIn) {
+            // element = '<a onclick="verifyLogout()">Logout</a>';
+            element = '<a href="https://visualgo.net/profile">Profile</a>'; 
+          }
+          else {
+            element = '<a href="https://visualgo.net/login">Login</a>'
+          }
+          $('#useraccount').html(element);
+        });
+      });
+
+      function verifyLogout() {
+        // Steven's remarks: use a better 'confirm' than the default :(
+        var doesLogout = confirm('Are you sure to logout?');
+        if (doesLogout == true) {
+          window.location = "https://visualgo.net/logout";
+        }
+      }
+
+      function checkLogin() {
+        $.get('/checklogin', function(data) {
+          var url = data['url'];
+          window.location.href = '/' + url;
+        });
+      }
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1566631-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/jquery-ui.min.js"></script>
+
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/d3.min.js"></script>
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/viz-1.0.3.js"></script>
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/visualgo_print.js"></script>
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/graph_library.js"></script>
+<script>
+      function runSlide(slide) {
+        if (slide == '1') {
+          $("#e-lecture").html("slide " + slide + " (" + 7 + "%)");
+          
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '2') {
+          $("#e-lecture").html("slide " + slide + " (" + 14 + "%)");
+          
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '3') {
+          $("#e-lecture").html("slide " + slide + " (" + 21 + "%)");
+          
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '4') {
+          $("#e-lecture").html("slide " + slide + " (" + 28 + "%)");
+          $('#codeExample').val('Factorial');
+factorial();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '5') {
+          $("#e-lecture").html("slide " + slide + " (" + 35 + "%)");
+          $('#codeExample').val('Fibonacci');
+fibonacci();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '6') {
+          $("#e-lecture").html("slide " + slide + " (" + 42 + "%)");
+          $('#codeExample').val('Catalan');
+catalan();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '7') {
+          $("#e-lecture").html("slide " + slide + " (" + 50 + "%)");
+          $('#codeExample').val('ModuloFunction');
+gcd();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '8') {
+          $("#e-lecture").html("slide " + slide + " (" + 57 + "%)");
+          $('#codeExample').val('NCK');
+nchoosek();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '9') {
+          $("#e-lecture").html("slide " + slide + " (" + 64 + "%)");
+          $('#codeExample').val('RangeSumQuery');
+rangeSumQuery();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '10') {
+          $("#e-lecture").html("slide " + slide + " (" + 71 + "%)");
+          $('#codeExample').val('Knapsack');
+knapsack();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '11') {
+          $("#e-lecture").html("slide " + slide + " (" + 78 + "%)");
+          $('#codeExample').val('CoinChange');
+coinChange();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '12') {
+          $("#e-lecture").html("slide " + slide + " (" + 85 + "%)");
+          $('#codeExample').val('LongestIncreasingSubsequence');
+longestSubsequence();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '13') {
+          $("#e-lecture").html("slide " + slide + " (" + 92 + "%)");
+          $('#codeExample').val('TravelingSalesman');
+travelingSalesman();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+        if (slide == '14') {
+          $("#e-lecture").html("slide " + slide + " (" + 100 + "%)");
+          $('#codeExample').val('Matching');
+matching();
+          showActionsPanel();
+          hideStatusPanel();
+          hideCodetracePanel();
+      
+        }
+      }
+
+      window.onpopstate = function(event) {
+        var slide = event.state['slide'];
+        openSlide(slide, function() {
+          runSlide(slide);
+        });
+      };
+
+      function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'), sParameterName, i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] === sParam) return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+      };
+
+      function pushState(slideValue) {
+        var url = '/en/recursion';
+        if (typeof slideValue != 'undefined' && slideValue != null) url += '?slide=' + slideValue;
+        window.history.pushState({slide: slideValue}, "slide " + slideValue, url);
+      }
+
+      function showPopup(callback) {
+        $('#popup').fadeIn(100, callback);
+      }
+
+      function hidePopup(callback) {
+        $('#popup').fadeOut(100, callback);
+      }
+
+      function showOverlay() {
+        $('#overlay').css('opacity', 0.5); 
+        $('#overlay').show();
+      }
+
+      function hideOverlay() {
+        $('#overlay').hide();
+        $("#e-lecture").html("");
+      }
+
+      function makeOverlayTransparent() {
+        $('#overlay').css('opacity', 0);
+      }
+
+      function hideSlide(callback) {
+        isPlaying = true;
+        closeSlide(cur_slide, function() {
+          makeOverlayTransparent();
+          setTimeout(callback, 700); // don't immediately run the animation, wait for 500ms+ first
+        });
+      }
+
+      function showSlide() {
+        isPlaying = false;
+        openSlide(cur_slide);
+        showOverlay();
+      }
+
+      $(function() {
+        var slide = getUrlParameter('slide');
+        
+        $.get('/hasvisited' + '/recursion', function(data) {
+          var hasVisited = data['hasvisited'] == '1';
+          if (!hasVisited) {
+            var postData = {
+              '_token': 'sXeDRf9BVoWntQPqhTCkkan6eQjdhghpMmBxXUzX',
+              'page': '/recursion'.substring(1),
+            };
+
+            $.post("/visitpage", postData, function(data) {
+              // non critical request...
+            });
+
+            if (typeof slide != undefined && slide != null) {
+              cur_slide = slide;
+            }
+
+            $("#mode-menu a").trigger("click");
+          }
+          else {
+            if (typeof slide != undefined && slide != null) {
+              cur_slide = slide;
+              $('#mode-menu a').click();
+            }    
+          }
+        }).fail(function() {
+          if (typeof slide != undefined && slide != null) {
+            cur_slide = slide;
+            $('#mode-menu a').click();
+          }
+        });
+
+        $('.mcq-submit').click(function() {
+          var questionId = parseInt($(this).attr('id').split('-')[1]);
+          var answer = $('#mcq-answer-' + questionId).val();
+          var userAnswer = $('input[type=radio][name=mcq-'+questionId+'-choice]:checked').val();
+
+          if (answer === userAnswer) {
+            $('#answer-status-' + questionId).html('<font color="green"><b>Correct!</b></font>');
+          }
+          else {
+            $('#answer-status-' + questionId).html('<font color="red"><b>Wrong Answer! Try again...</b></font>');
+          }
+          $('#answer-status-' + questionId).show();
+          setTimeout(function() {
+            $('#answer-status-' + questionId).fadeOut(1000);
+          }, 1000);
+        });
+
+        $('.msq-submit').click(function() {
+          var questionId = parseInt($(this).attr('id').split('-')[1]);
+          var answer = $('#msq-answer-' + questionId).val();
+
+          var answers = [];
+          $('input[type=checkbox][class=msq-choice]:checked').each(function() {
+            answers.push($(this).attr('id').split('-')[3]);
+          });
+          answers.sort();
+          var userAnswer = answers.join(',');
+
+          if (answer === userAnswer) {
+            $('#answer-status-' + questionId).html('<font color="green">Correct!</font>');
+          }
+          else {
+            $('#answer-status-' + questionId).html('<font color="red">Wrong Answer! Try again...</font>');
+          }
+          $('#answer-status-' + questionId).show();
+          setTimeout(function() {
+            $('#answer-status-' + questionId).fadeOut(1000);
+          }, 1000);
+        });
+
+        $('select.lecture-dropdown').change(function() {
+          var nextSlide = $(this).val();
+          openSlide(nextSlide, function() {
+            runSlide(nextSlide);
+            pushState(nextSlide);
+          });
+        });
+
+        $('#hide-popup').click(function() {
+          hidePopup();
+        });
+
+        $('#popup').hover(function() {
+          $('#hide-popup').show();
+        }, function() {
+          $('#hide-popup').hide();
+        });
+
+        $('#electure-1 .electure-next').click(function() {
+          hidePopup();
+          runSlide('2');
+          pushState('2');
+        });
+      
+        $('#electure-2 .electure-next').click(function() {
+          hidePopup();
+          runSlide('3');
+          pushState('3');
+        });
+        $('#electure-2 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('1');
+          pushState('1');
+        });
+      
+        $('#electure-3 .electure-next').click(function() {
+          hidePopup();
+          runSlide('4');
+          pushState('4');
+        });
+        $('#electure-3 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('2');
+          pushState('2');
+        });
+      
+        $('#electure-4 .electure-next').click(function() {
+          hidePopup();
+          runSlide('5');
+          pushState('5');
+        });
+        $('#electure-4 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('3');
+          pushState('3');
+        });
+      
+        $('#electure-5 .electure-next').click(function() {
+          hidePopup();
+          runSlide('6');
+          pushState('6');
+        });
+        $('#electure-5 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('4');
+          pushState('4');
+        });
+      
+        $('#electure-6 .electure-next').click(function() {
+          hidePopup();
+          runSlide('7');
+          pushState('7');
+        });
+        $('#electure-6 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('5');
+          pushState('5');
+        });
+      
+        $('#electure-7 .electure-next').click(function() {
+          hidePopup();
+          runSlide('8');
+          pushState('8');
+        });
+        $('#electure-7 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('6');
+          pushState('6');
+        });
+      
+        $('#electure-8 .electure-next').click(function() {
+          hidePopup();
+          runSlide('9');
+          pushState('9');
+        });
+        $('#electure-8 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('7');
+          pushState('7');
+        });
+      
+        $('#electure-9 .electure-next').click(function() {
+          hidePopup();
+          runSlide('10');
+          pushState('10');
+        });
+        $('#electure-9 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('8');
+          pushState('8');
+        });
+      
+        $('#electure-10 .electure-next').click(function() {
+          hidePopup();
+          runSlide('11');
+          pushState('11');
+        });
+        $('#electure-10 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('9');
+          pushState('9');
+        });
+      
+        $('#electure-11 .electure-next').click(function() {
+          hidePopup();
+          runSlide('12');
+          pushState('12');
+        });
+        $('#electure-11 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('10');
+          pushState('10');
+        });
+      
+        $('#electure-12 .electure-next').click(function() {
+          hidePopup();
+          runSlide('13');
+          pushState('13');
+        });
+        $('#electure-12 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('11');
+          pushState('11');
+        });
+      
+        $('#electure-13 .electure-next').click(function() {
+          hidePopup();
+          runSlide('14');
+          pushState('14');
+        });
+        $('#electure-13 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('12');
+          pushState('12');
+        });
+      
+        $('#electure-14 .electure-prev').click(function() {
+          hidePopup();
+          runSlide('13');
+          pushState('13');
+        });
+      
+ 
+
+        // temporary quick fix for Google Chrome Aug 2016 issue..., put at last part so that everything else has been loaded
+        // setTimeout(function(){ document.body.style.zoom = "100.1%"; }, 500);
+        // setTimeout(function(){ document.body.style.zoom = "100%"; }, 600);
+        // I turn it off on 14 June 2018, seems 'ok'?
+      });
+
+
+      function adjustPopupToImageSize() {
+        var width = $('#popup-image').prop('width');
+        var height = $('#popup-image').prop('height');
+        $('#popup').width(width + 20);
+        $('#popup').height(height + 20);
+        if (width == 0 && height == 0) {
+          setTimeout(adjustPopupToImageSize, 200);
+        } else {
+          showPopup();  
+        }
+      }
+
+      function POPUP_IMAGE(url) {
+        $('#popup-content').html('<img id="popup-image" src="' + url + '">');
+        adjustPopupToImageSize();
+      }
+
+      function URL(url) {
+        window.open(url, '_blank');
+      }
+
+      // Implement these functions in each visualisation
+      // This function will be called before entering e-Lecture Mode
+      function ENTER_LECTURE_MODE() {}
+
+      // This function will be called before returning to Explore Mode
+      function ENTER_EXPLORE_MODE() {}
+
+      // Lecture action functions
+      function CUSTOM_ACTION(action, data, mode) {}
+    </script>
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/misc.js"></script>
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/map.js"></script>
+<script src="./VisuAlgo - Recursion Tree and DAG (Dynamic Programming_DP)_files/showCodes.js"></script>
+<script type="text/javascript">
+// Recursion Widget
+// original author: Phan Thi Quynh Trang, then significantly upgraded by Nathan Azaria
+
+function RecursionException(message) {
+  this.name = "RecursionException";
+  this.message = message;
+}
+
+function RecursionWidget() {
+  var isDP = false;
+  
+  var self = this;
+  var graphWidget = new GraphWidget();
+  
+  var recursionStack = [];
+  var memoNumber = new Map();
+  var memoValue = new Map();
+  var memoColor = new Map();
+    
+  var vertexCount = 0;
+  var vertexList = [];
+  var edgeCount = 0;
+  
+  var a;
+  var f;
+  var userFunction; //used to store user-defined function
+  var modifiedFunction = function() {
+    //Create a new vertex
+    var newVertex = {
+      cx : 0,
+      cy : 0,
+      adj : [],
+      edgeNumber : [],
+      index : vertexCount,
+      arguments : arguments,
+      parent : -1
+    }
+    vertexList.push(newVertex);
+    vertexCount++;
+    
+    if (vertexCount > 5000)
+      throw new RecursionException('Too many vertices');
+    
+    if (recursionStack.length > 0) {
+      vertexList[recursionStack[recursionStack.length-1]].adj.push(newVertex.index);
+      vertexList[recursionStack[recursionStack.length-1]].edgeNumber.push(edgeCount);
+      ++edgeCount;
+      newVertex.parent = recursionStack[recursionStack.length-1];
+    }
+    recursionStack.push(newVertex.index);
+    
+    var returnValue = userFunction.apply(self, arguments);
+    newVertex.result = returnValue;
+    
+    recursionStack.pop();
+    return returnValue;
+  }
+  
+  var modifiedFunctionDP = function() {
+    // console.log(arguments);
+    var prev = null;
+    if (recursionStack.length > 0) {
+      prev = recursionStack[recursionStack.length-1];
+    }
+    //check in memo
+    if (memoNumber.get(arguments) != null) {
+      var currentVertex = memoNumber.get(arguments);
+      if (prev != null) {
+        vertexList[prev].adj.push(currentVertex);
+        vertexList[prev].edgeNumber.push(edgeCount);
+        ++edgeCount;
+      }
+      
+      var returnValue = vertexList[currentVertex].result;
+      return returnValue;
+    }
+    else {
+      var newVertex = {
+        cx : 0,
+        cy : 0,
+        adj : [],
+        edgeNumber : [],
+        index : vertexCount,
+        arguments : arguments,
+        parent : -1
+      };
+      vertexList.push(newVertex);
+      vertexCount++;
+      
+      if (vertexCount > 5000)
+        throw new RecursionException('Too many vertices');
+        
+      if (prev != null) {
+        vertexList[prev].adj.push(newVertex.index);
+        vertexList[prev].edgeNumber.push(edgeCount);
+        newVertex.parent = prev;
+        ++edgeCount;
+      }
+      
+      recursionStack.push(newVertex.index);
+      
+      var returnValue = userFunction.apply(self, arguments);
+      newVertex.result = returnValue;
+      memoNumber.put(arguments, newVertex.index);
+      
+      recursionStack.pop();
+      return returnValue;
+    }
+  }
+  
+  function calcHeight(vertexNumber) {
+    if (vertexList[vertexNumber].parent == -1)
+      return 0;
+    else
+      return calcHeight(vertexList[vertexNumber].parent) + 1;
+  }
+  
+  function recalculatePosition() {
+    var numLeaf = 0;
+    var maxHeight = 0;
+    for (var i = 0; i < vertexCount; i++) {
+      if (vertexList[i].adj.length == 0)
+        ++numLeaf;
+      maxHeight = Math.max(maxHeight, calcHeight(i));
+    }
+    var leafProcessed = 0;
+    
+    // console.log(numLeaf);
+    calcPosition(0);
+    
+    function calcPosition(vertexNumber) {
+                  if (maxHeight == 0) {
+        vertexList[vertexNumber].cy = 1/2 * (MAIN_SVG_HEIGHT - 100) + 50;
+      } else {
+        vertexList[vertexNumber].cy = (calcHeight(vertexNumber)/maxHeight)*(MAIN_SVG_HEIGHT-100) + 50;
+      }
+      var adjSize = vertexList[vertexNumber].adj.length;
+      if (adjSize == 0) {
+        vertexList[vertexNumber].cx = ((leafProcessed+1)/(numLeaf+1))*(MAIN_SVG_WIDTH-100)+50;
+        ++leafProcessed;
+        return {
+          sumx : vertexList[vertexNumber].cx,
+          num : 1
+        };
+      }
+      var sumx = 0;
+      var num = 0;
+      for (var i = 0; i < adjSize; i++) {
+        var nextVertex = vertexList[vertexNumber].adj[i];
+        var returnValue = calcPosition(nextVertex);
+        sumx += vertexList[nextVertex].cx;
+        num += 1;
+      }
+      vertexList[vertexNumber].cx = sumx / num;
+      return {
+        sumx : sumx,
+        num : num
+      }
+    /*
+      vertexList[vertexNumber].cy = calcHeight(vertexNumber) * 75 + 50;
+      vertexList[vertexNumber].cx = (left + right) / 2;
+      var adjSize = vertexList[vertexNumber].adj.length;
+      for (var i = 0; i < adjSize; i++) {
+        var nextVertex = vertexList[vertexNumber].adj[i];
+        var nextLeft = (i * right + (adjSize - i) * left) / adjSize;
+        var nextRight = ((i+1) * right + (adjSize - i - 1) * left) / adjSize;
+        calcPosition(nextVertex, nextLeft, nextRight);
+      }*/
+    }
+  }
+  
+  function recalculatePositionDP() {
+    var g = new dagre.Digraph();
+    for (var i = 0; i < vertexCount; i++)
+      g.addNode(i, {label : "", width : 0, height: 0});
+    for (var i = 0; i < vertexCount; i++)
+      for (var j = vertexList[i].adj.length - 1; j >= 0; j--) {
+        g.addEdge(-vertexList[i].edgeNumber[j], i, vertexList[i].adj[j]);
+      }
+    var layout = dagre.layout().run(g);
+    var outputGraph = layout.graph();
+    //console.log(outputGraph);
+    layout.eachNode(function(u, value) {
+      if (outputGraph.width == 0)
+        vertexList[u].cx = MAIN_SVG_WIDTH/2;
+      else
+        vertexList[u].cx = (value.x * (MAIN_SVG_WIDTH-100)/outputGraph.width) + 50;
+      vertexList[u].cy = (value.y * (MAIN_SVG_HEIGHT-100)/outputGraph.height) + 50;
+    });
+    // layout.eachEdge(function(e, u, v, value) {
+    //   console.log(e + "  " + u + "->" + v + " " + JSON.stringify(value));
+    // });
+    // console.log(vertexList);
+  }
+  
+  function clear() {
+    while (vertexList.length > 0)
+      vertexList.pop();
+    while (recursionStack.length > 0)
+      recursionStack.pop();
+    memoNumber.clear();
+    memoValue.clear();
+    memoColor.clear();
+    vertexCount = 0;
+    edgeCount = 0;
+  }
+  
+  this.getGraphWidget = function() {
+    return graphWidget;
+  }
+  
+  this.setUserFunction = function(argumentList, body) {
+    var func = "function (" + argumentList + "){" + body + "}";
+    userFunction = eval("_f = " + func);
+  }
+  
+  this.init = function() {
+    recursionStack = [];
+    memoNumber = new Map();
+    memoColor = new Map();
+  }
+  
+  //Create the tree
+  this.createTree = function() {
+    f = modifiedFunction;
+    modifiedFunction.apply(self, arguments);
+  }
+  
+  this.createTreeDP = function() {
+    f = modifiedFunctionDP;
+    modifiedFunctionDP.apply(self, arguments);
+  }
+  
+  this.createAnimation = function() {
+    recalculatePosition();
+    var state = {
+      vl : {},
+      el : {},
+    }
+    var stateList = [];
+    for (var i = 0; i < vertexCount; i++) {
+      var newVertex = {
+        cx : vertexList[i].cx,
+        cy : vertexList[i].cy,
+        text : argToString(vertexList[i].arguments),
+        state : OBJ_HIDDEN,
+        extratext : ""
+      }
+      state.vl[i] = newVertex;
+    }
+    for (var i = 0; i < vertexCount; i++) {
+      for (var j = 0; j < vertexList[i].adj.length; j++) {
+        var newEdge = {
+          vertexA : i,
+          vertexB : vertexList[i].adj[j],
+          type : EDGE_TYPE_DE,
+          weight : 1,
+          state : OBJ_HIDDEN,
+          animateHighlighted : false
+        }
+        state.el[vertexList[i].edgeNumber[j]] = newEdge;
+      }
+    }
+    stateList.push(deepCopy(state));
+    traverse(0);
+    graphWidget.startAnimation(stateList);
+    //console.log(stateList);
+    function traverse(vertexNumber) {
+      state.vl[vertexNumber].state = VERTEX_HIGHLIGHTED,
+      stateList.push(deepCopy(state));
+      for (var i = 0; i < vertexList[vertexNumber].adj.length; i++) {
+        var nextVertex = vertexList[vertexNumber].adj[i];
+        var nextEdge = vertexList[vertexNumber].edgeNumber[i];
+        state.el[nextEdge].state = EDGE_HIGHLIGHTED;
+        state.el[nextEdge].animateHighlighted = true;
+        stateList.push(deepCopy(state));
+        state.el[nextEdge].animateHighlighted = false;
+        traverse(nextVertex);
+        state.el[nextEdge].state = EDGE_DEFAULT;
+      }
+      state.vl[vertexNumber].extratext = vertexList[vertexNumber].result;
+      if (vertexList[vertexNumber].adj.length == 0)
+        state.vl[vertexNumber].state = VERTEX_GREEN_FILL;
+      else if (memoColor.get(vertexList[vertexNumber].arguments) == null) {
+        state.vl[vertexNumber].state = VERTEX_DEFAULT;
+        memoColor.put(vertexList[vertexNumber].arguments, 1);
+      }
+      else
+        state.vl[vertexNumber].state = VERTEX_BLUE_FILL;
+      stateList.push(deepCopy(state));
+    }
+  }
+  
+  this.createAnimationDP = function() {
+    recalculatePositionDP();
+    var state = {
+      vl : {},
+      el : {},
+    }
+    var stateList = [];
+    for (var i = 0; i < vertexCount; i++) {
+      var newVertex = {
+        cx : vertexList[i].cx,
+        cy : vertexList[i].cy,
+        text : argToString(vertexList[i].arguments),
+        state : OBJ_HIDDEN,
+        extratext : ""
+      }
+      state.vl[i] = newVertex;
+    }
+    for (var i = 0; i < vertexCount; i++) {
+      for (var j = 0; j < vertexList[i].adj.length; j++) {
+        var newEdge = {
+          vertexA : i,
+          vertexB : vertexList[i].adj[j],
+          type : EDGE_TYPE_DE,
+          weight : 1,
+          state : OBJ_HIDDEN,
+          animateHighlighted : false
+        }
+        state.el[vertexList[i].edgeNumber[j]] = newEdge;
+        //console.log(vertexList[i].edgeNumber[j]);
+      }
+    }
+    stateList.push(deepCopy(state));
+    traverse(0);
+    graphWidget.startAnimation(stateList);
+    //console.log(stateList);
+    function traverse(vertexNumber) {
+      if (state.vl[vertexNumber].state == OBJ_HIDDEN) {
+        state.vl[vertexNumber].state = VERTEX_HIGHLIGHTED,
+        stateList.push(deepCopy(state));
+        for (var i = 0; i < vertexList[vertexNumber].adj.length; i++) {
+          var nextVertex = vertexList[vertexNumber].adj[i];
+          var nextEdge = vertexList[vertexNumber].edgeNumber[i];
+          state.el[nextEdge].state = EDGE_HIGHLIGHTED;
+          state.el[nextEdge].animateHighlighted = true;
+          stateList.push(deepCopy(state));
+          state.el[nextEdge].animateHighlighted = false;
+          traverse(nextVertex);
+          state.el[nextEdge].state = EDGE_DEFAULT;
+        }
+        state.vl[vertexNumber].extratext = vertexList[vertexNumber].result;
+        if (vertexList[vertexNumber].adj.length == 0)
+          state.vl[vertexNumber].state = VERTEX_GREEN_FILL;
+        else
+          state.vl[vertexNumber].state = VERTEX_DEFAULT;
+        stateList.push(deepCopy(state));
+      }
+    }
+  }
+  
+  
+  //Visualize the recursion, given the argument as a string
+  this.visualize = function(argumentList, code, argument, otherVar1, otherVar2) {
+    //console.log("HERE");
+    clear();
+    //console.log("HERE2");
+    recursionWidget.setUserFunction(argumentList, code);
+    a1 = eval(otherVar1);
+    a2 = eval(otherVar2);
+    //console.log(a1);
+    if (!isDP) {
+      eval("this.createTree(" + argument + ")");
+      //console.log(vertexList);
+      this.createAnimation();
+    }
+    else {
+      eval("this.createTreeDP(" + argument + ")");
+      //console.log(vertexList);
+      this.createAnimationDP();
+    }
+  }
+  
+  this.isDP = function(bool) {
+    if(typeof bool != 'boolean') return;
+    
+    if(bool != isDP){
+      var emptyState = {
+        vl : {},
+        el : {}
+      }
+      clear();
+      isDP = bool;
+    }
+  }
+}
+
+
+
+// Recursion action
+// actions panel stuff
+var actionsWidth = 355;
+var statusCodetraceWidth = 420;
+var isRunOpen = false;
+function openRun() {
+  if(!isRunOpen) {
+    $('.run').fadeIn('fast');
+    isRunOpen = true;
+  }
+}
+function closeRun() {
+  if(isRunOpen) {
+    $('.run').fadeOut('fast');
+    $('#run-err').html("");
+    isRunOpen = false;
+  }
+}
+function hideEntireActionsPanel() {
+  closeRun();
+  hideActionsPanel();
+}
+
+var oldCode = "";
+$('#code').on("change keyup keydown", function() {
+  var newCode = $('#code').val();
+  if (newCode != oldCode)
+    $('#codeExample').val('CustomCode');
+  oldCode = newCode;
+});
+
+$("#codeExample").change(function() {
+  choice = $(this).val();
+  switch (choice) {
+    case "Factorial":
+      factorial();
+      break;
+    case "ModuloFunction":
+      gcd();
+      break;
+    case "Catalan":
+      catalan();
+      break;
+    case "RangeSumQuery":
+      rangeSumQuery();
+      break;
+    case "Fibonacci":
+      fibonacci();
+      break;
+    case "NCK":
+      nchoosek();
+      break;
+    case "FlightPlanner":
+      flightPlanner();
+      break;
+    case "Knapsack":
+      knapsack();
+      break;
+    case "CoinChange":
+      coinChange();
+      break;
+    case "LongestIncreasingSubsequence":
+      longestSubsequence();
+      break;
+    case "UVa10702":
+      UVa10702();
+      break;
+    case "TravelingSalesman":
+      travelingSalesman();
+      break;
+    case "Matching":
+      matching();
+      break;
+    default:
+      ;
+  }
+});
+
+fibonacci(); // use this as the default example
+
+$('#play').hide();
+
+$('#title-recursion').click(function() {
+  if (isPlaying) stop();
+  showActionsPanel();
+  hideStatusPanel();
+  hideCodetracePanel();
+  recursionWidget.isDP(false);
+  if ($('#code').val() != '') go();
+});
+
+$('#title-dp').click(function() {
+  if (isPlaying) stop();
+  showActionsPanel();
+  hideStatusPanel();
+  hideCodetracePanel();
+  recursionWidget.isDP(true);
+  if ($('#code').val() != '') go();
+});
+
+$(function() {
+  var actionsHeight = 210;
+  $('#actions').css('height', actionsHeight);
+  $('#actions').css('width', actionsWidth);
+  var actionsHideTop = Math.floor((actionsHeight - 16) / 2);
+  var actionsHideBottom = (actionsHeight - 16) - actionsHideTop;
+  $('#actions-hide').css('padding-top', actionsHideTop);
+  $('#actions-hide').css('padding-bottom', actionsHideBottom);
+
+  var codeExample = getQueryVariable("example");
+  if (codeExample.length > 0) {
+    $('#codeExample').val(codeExample);
+    $('#codeExample').trigger('change');
+  }
+  var arguments = getQueryVariable("arguments");
+  if (arguments.length > 0) {
+    arguments = JSON.parse(arguments);
+    var functionArguments = "";
+    for (var key in arguments)
+      functionArguments += key + "=" + arguments[key] + ","
+    functionArguments = functionArguments.replace(/(^,)|(,$)/g, ""); // trim trailing comma
+    $('#arguments_textBox').val(functionArguments);
+  }
+});
+
+var recursionWidget = new RecursionWidget();
+var gw = recursionWidget.getGraphWidget();
+
+function go() {
+  if (isPlaying) stop();
+  setTimeout(function() {
+    if ((mode == "exploration")) {
+      var arguments = $('#arguments_textBox').val();
+      var arrayOfPairs = arguments.split(",");
+      for (var i = 0; i < arrayOfPairs.length; i++)
+        arrayOfPairs[i] = arrayOfPairs[i].split("=");
+      var arguments = "";
+      for (var i = 0; i < arrayOfPairs.length; i++) {
+        if (i > 0) arguments += ", ";
+        arguments += arrayOfPairs[i][0];
+      }
+      var parameters = "";
+      for (var i = 0; i < arrayOfPairs.length; i++) {
+        if (i > 0) parameters += ", ";
+        for (var j = 1; j < arrayOfPairs[i].length; j++) {
+          if (j > 1) parameters += "=";
+          parameters += arrayOfPairs[i][j];
+        }
+      }
+      try {
+        recursionWidget.visualize(arguments,
+          $('#code').val(),
+          parameters,
+          $('#variable1_textBox').val(),
+          $('#variable2_textBox').val());
+      }
+      catch (e) {
+        // console.log(e);
+        $('#error').html(e.message);
+        $('#error').show();
+        $('#error').fadeOut(3000);
+        return;
+      }
+      $('#progress-bar').slider("option", "max", gw.getTotalIteration()-1);
+      isPlaying = true;
+    }
+  }, 500);
+}
+
+function factorial() {
+  // showCodetracePanel();
+  showFactorialCode();
+  oldCode = $('#code').val();
+}
+function fibonacci() {
+  // showCodetracePanel();
+  showFibonacciCode();
+  oldCode = $('#code').val();
+}
+function catalan() {
+  // showCodetracePanel();
+  showCatalanCode();
+  oldCode = $('#code').val();
+}
+function gcd() {
+  // showCodetracePanel();
+  showGcdCode();
+  oldCode = $('#code').val();
+}
+function nchoosek() {
+  // showCodetracePanel();
+  showNChooseKCode();
+  oldCode = $('#code').val();
+}
+function rangeSumQuery() {
+  // showCodetracePanel();
+  showRangeSumQueryCode();
+  oldCode = $('#code').val();
+}
+// function flightPlanner() {
+//   showCodetracePanel();
+//   showFlightPlannerCode();
+//   oldCode = $('#code').val();
+// }
+function knapsack() {
+  // showCodetracePanel();
+  showKnapsackCode();
+  oldCode = $('#code').val();
+}
+function coinChange() {
+  // showCodetracePanel();
+  showCoinChangeCode();
+  oldCode = $('#code').val();
+}
+function longestSubsequence() {
+  // showCodetracePanel();
+  showLisCode();
+  oldCode = $('#code').val();
+}
+// function UVa10702() {
+//   // showCodetracePanel();
+//   showUVa10702Code();
+//   oldCode = $('#code').val();
+// }
+function travelingSalesman() {
+  // showCodetracePanel();
+  showTspCode();
+  oldCode = $('#code').val();
+}
+function matching() {
+  // showCodetracePanel();
+  showMatchingCode();
+  oldCode = $('#code').val();
+}
+var codeVisible = true;
+</script>
+
+
+</body><grammarly-mirror data-grammarly-shadow-root="true" class="cGcvT"></grammarly-mirror></html>
