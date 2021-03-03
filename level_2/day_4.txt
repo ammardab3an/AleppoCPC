@@ -1,0 +1,19 @@
+#اليوم_الثالث 
+#Day_3
+
+#complete_search #brute_force #practice_session
+
+
+الاكواد اللي كتبناها اليوم موجودة بالgithub بالمسار التالي
+AleppoCPC/level_2/subjects/complete search/brute force/during sessions codes
+
+روابط المسائل:
+10360 - Rat Attack
+https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=1301
+
+729 - The Hamming Distance Problem
+https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=670
+
+A. ABC String
+https://codeforces.com/contest/1494/problem/A
+
