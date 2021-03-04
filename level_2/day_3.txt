@@ -1,5 +1,5 @@
-#اليوم_الثالث 
-#Day_3
+#متوسط #اليوم_الثالث 
+#Level_2 #Day_3
 
 #complete_search #brute_force
 

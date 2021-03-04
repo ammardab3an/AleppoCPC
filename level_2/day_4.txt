@@ -1,5 +1,5 @@
-#اليوم_الثالث 
-#Day_3
+#متوسط #اليوم_الرابع 
+#Level_2 #Day_4
 
 #complete_search #brute_force #practice_session
 
@@ -16,4 +16,3 @@ https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_prob
 
 A. ABC String
 https://codeforces.com/contest/1494/problem/A
-
