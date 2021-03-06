@@ -1,0 +1,36 @@
+مسا الخير جميعا
+
+روابط  #اليوم_الثاني #Day_2 :
+
+
+مرجع اضافي عام
+https://www.geeksforgeeks.org/
+قناة الدكتور مصطفى سعد (شارح كلشي مواضيع للمسابقة (وبرا المسابقة) بالعربي وبشكل كتير حلو ومرتب. وعادي اذا شفتو الفيديو كذا مرة ليمشي الحال).
+https://www.youtube.com/c/ArabicCompetitiveProgramming/featured
+
+مرجع Stl شامل (بيلزم اذا ما كان في نت مثلا)
+https://github.com/ammardab3an/ACM/raw/main/pdf/Cpp_STL_ReferenceManual000.pdf
+مرجع c++ عالنت شامل طبعا
+https://www.cplusplus.com/
+
+مراجع للباينري سيرش
+https://www.geeksforgeeks.org/binary-search/
+https://www.youtube.com/watch?v=2G7RzlxTNPo&t=2s
+شيتات باينري سيرش اضافية اصعب شوي من السائل اللي حليناها 
+https://vjudge.net/contest/424726
+https://vjudge.net/contest/424727
+
+فيديو شرح اضافي للجمع التراكمي
+https://www.youtube.com/watch?v=hqOqr6vFPp8&t=1s
+مسائل جمع تراكمي للتدريب بتلاقوهن بالcp3 بالصفحة115 بالاضافة لشرح الكود بالصفحة 103
+
+روابط الtwo pointers 
+https://www.youtube.com/watch?v=n-Xwrr8RFQ0
+https://codeforces.com/edu/course/2/lesson/9/1
+https://codeforces.com/edu/course/2/lesson/9/1/practice
+https://codeforces.com/edu/course/2/lesson/9/2
+https://codeforces.com/edu/course/2/lesson/9/2/practice
+
+
+حل المسائل اللي حليناها اليوم من الgithub اللي نشرتو قبل, حاولو ما تحرقو الاكواد وترجعو تكتبوهن بالطريقتين (تثبيت الr او تثبيت الl)
+https://github.com/ammardab3an/AleppoCPC/tree/main/level_2/subjects/two%20pointers
