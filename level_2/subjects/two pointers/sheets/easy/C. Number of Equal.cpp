@@ -61,7 +61,7 @@ int32_t main(){
     
     lli ans = 0;
     
-    int i(0), j(0);
+    int i = 0, j = 0;
     
     int cnt_0 = 1;
     int cnt_1 = 1;

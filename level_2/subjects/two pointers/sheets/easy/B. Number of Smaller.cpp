@@ -59,7 +59,7 @@ int32_t main(){
     for(auto &i : vec_0) cin >> i;
     for(auto &i : vec_1) cin >> i;
     
-    int i(0), j(0), cnt(0);
+    int i = 0, j = 0, cnt = 0;
     
     while(i < n && j < m){
         

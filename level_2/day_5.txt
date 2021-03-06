@@ -1,0 +1,46 @@
+#متوسط #اليوم_الخامس 
+#Level_2 #Day_5
+
+#math #number_theory 
+
+مراجع للنمبر ثيوري:
+
+كل الافكار موجودة بكتاب الcp3 بالفصل الخامس تحت عنوان number theory صفحة 210
+
+https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html
+https://cp-algorithms.com/algebra/primality_tests.html
+https://cp-algorithms.com/algebra/divisors.html
+
+https://www.geeksforgeeks.org/number-theory-competitive-programming/
+https://www.geeksforgeeks.org/sieve-of-eratosthenes/
+https://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/
+
+https://www.youtube.com/watch?v=Syx2qDjj7TE&list=PLPt2dINI2MIY7l5zyFd1W28rei3b-AXaJ
+https://www.youtube.com/watch?v=VZBfW08ECgA
+https://www.youtube.com/watch?v=-5ApOQDhBtU
+
+
+المسائل:
+
+A. Almost Prime
+https://codeforces.com/problemset/problem/26/A
+
+B. T-primes
+https://codeforces.com/problemset/problem/230/B
+
+B. Sherlock and his girlfriend
+https://codeforces.com/problemset/problem/776/B
+
+C. Tiles
+https://codeforces.com/problemset/problem/1178/C
+
+B. Kuriyama Mirai's Stones
+https://codeforces.com/problemset/problem/433/B
+
+A. Greg and Array
+https://codeforces.com/problemset/problem/295/A
+
+حل المسائل والاكواد صارو بالgithub
+https://github.com/ammardab3an/AleppoCPC/tree/main/level_2/subjects/Math
+
+
