@@ -1,7 +1,7 @@
 #متوسط #اليوم_الثالث 
 #Level_2 #Day_3
 
-#complete_search #brute_force
+#complete_search #brute_force #recursion #bitmask
 
 مراجع للعمليات على البتات
 https://www.cprogramming.com/tutorial/bitwise_operators.html

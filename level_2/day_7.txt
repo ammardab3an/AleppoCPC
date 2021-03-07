@@ -1,0 +1,39 @@
+#متوسط #اليوم_السابع 
+#Level_2 #Day_7
+
+#complete_search #dynamic_programming #dp
+
+مراجع للديبي:
+
+من كتاب الCP3 صفحة 95
+https://www.geeksforgeeks.org/dynamic-programming/
+
+قائمة تشغيل من قناة ال د.مصطفى سعد فيا معظم افكار الdp ولازم الكل يعمل عليها جولة
+https://www.youtube.com/watch?v=gFdP6X4CyKU&list=PLPt2dINI2MIattDutu7IOAMlUuLeN8k2p
+
+شروح لحل عدد من المسائل المشهورة باستخدام ال dp bottom up (معلش ولو شفتو اسلوب الاستاذ شوي جامد بس احسن من غيروا).
+https://www.youtube.com/watch?v=8LusJS5-AGo&list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr
+
+
+اما بالنسبة للمسائل:
+
+Easy Longest Increasing Subsequence
+https://www.spoj.com/problems/ELIS/
+
+Bytelandian gold coins
+https://www.spoj.com/problems/KNAPSACK/
+
+The Knapsack Problem
+https://www.spoj.com/problems/COINS/
+
+C. Woodcutters
+https://codeforces.com/contest/545/problem/C
+
+A. Cut Ribbon
+https://codeforces.com/contest/189/problem/A
+
+D. Flowers
+https://codeforces.com/contest/474/problem/D
+
+و كالعادة الاكواد اللي كتبناها اليوم موجودة بالgithub, بالمسار التالي:
+AleppoCPC/level_2/subjects/complete search/dynamic programming/during session codes
