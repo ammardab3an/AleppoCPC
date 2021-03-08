@@ -1,29 +1,34 @@
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-const int M = 1e5+1;
-const int R = 502, C = 502;
-int r, c, a[R][C], dp[R][C], vis[R][C];
-string s[M];
-int rec( int i, int j){
-    if (i > r - 1) return -1e9;
-    if (j > c - 1) return -1e9;
-    if (i == r - 1 && j == c  - 1) {
-        return a[i][j];
-    }
-    int &ret = dp[i][j];
-    if (vis[i][j]) return dp[i][j];
-    ret = -1e9;
-    ret = max(a[i][j] + rec(i + 1 ,j), ret);
-    ret = max(a[i][j] + rec(i ,j + 1), ret);
-    vis[i][j] = 1;
-    return ret;
+
+int n, m;
+int arr[555][555];
+int mem[555][555];
+
+int go(int i, int j){
+
+	if(i == n-1 && j == m-1)
+		return arr[i][j];
+
+	int &ret = mem[i][j];
+	if(ret + 1) return ret;
+
+	int stPath = -1e9, ndPath = -1e9;
+
+	if(i+1 < n) stPath = go(i+1, j);
+	if(j+1 < m) ndPath = go(i, j+1);
+
+	return ret = max(stPath, ndPath) + arr[i][j];
 }
-int main () {
-    cin >> r >> c;
-    memset(dp, -1, sizeof dp);
-    for (int i=0;i<r;i++)
-        for (int j=0;j<c;j++)
-            cin >> a[i][j];
-    cout << rec(0, 0);
+
+int main(){
+
+	cin >> n >> m;
+	for(int i = 0; i < n; i++)
+	for(int j = 0; j < m; j++) cin >> arr[i][j];
+
+	memset(mem, -1, sizeof mem);
+
+	cout << go(0, 0) << endl;
 }
+

@@ -1,30 +1,46 @@
+// By AmmarDab3an - Aleppo University
+
 #include<bits/stdc++.h>
+
 using namespace std;
-typedef long long ll;
-const int M = 1e5+1;
-int n, a[M], dp[M][12];
-string s[M];
-int rec( int i, int msk ){
-    if (msk == (1 << 3) - 1)return 0;
-    if (i == n){
-        return msk == (1 << 3) - 1?0:1e9;
-    }
-    int &ret = dp[i][msk];
-    if (ret + 1)return ret;
-    ret = rec(i+1,msk);
-    int z = msk;
-    for (int j=0;j<s[i].size();j++){
-        z |= ( 1 << (s[i][j]-'A'));
-    }
-    return ret = min(ret, a[i] + rec( i+1,z) );
+
+const int NMAX = 2e5 + 10;
+
+int n;
+int arr[NMAX][2];
+int mem[NMAX][1 << 3];
+
+int go(int pos, int msk){
+	
+	if(pos == n)
+		return msk == ((1 << 3)-1) ? 0 : 1e9;
+
+	int &ret = mem[pos][msk];
+	if(ret + 1) return ret;
+
+	int stPath = go(pos+1, msk);
+	int ndPath = go(pos+1, msk | arr[pos][1]) + arr[pos][0];
+
+	return ret = min(stPath, ndPath);
 }
+
 int main () {
-    scanf("%d",&n);
-    for (int i=0;i<n;i++){
-        cin >> a[i] >> s[i];
-    }
-    memset(dp, -1, sizeof dp);
-    int Ans =  rec(0,0);
-    if (Ans == 1e9) Ans = -1;
-    cout << Ans;
+
+	cin >> n;
+	for(int i = 0; i < n; i++){
+
+		cin >> arr[i][0];
+
+		arr[i][1] = 0;
+
+		string str;
+		cin >> str;
+
+		for(auto c : str){
+			arr[i][1] |= 1 << (c - 'A');
+		}
+	}
+	
+	memset(mem, -1, sizeof mem);
+	cout << (go(0, 0) < 1e9 ? mem[0][0] : -1) << endl;
 }

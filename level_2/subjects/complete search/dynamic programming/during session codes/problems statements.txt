@@ -1,0 +1,9 @@
+https://www.spoj.com/problems/KNAPSACK/
+https://www.spoj.com/problems/COINS/
+https://codeforces.com/problemset/problem/189/A
+
+pos p2:
+ÈÏהÇ Çב ÓÈ ÓםÊ Çבבם דÌדזÚוÇ Ç‗ÈÑ דÇ םד‗ה ב‗ה דÇ דהÞÏÑ הÇÎÏ ÚהÕÑםה זÑÇ ÈÚÖ
+
+dp: lis longest increasing subsequence
+ז‗ב דבÝ ‗Çה Íב בÊÚÏםב ÚÇבדÓÆבÉ
