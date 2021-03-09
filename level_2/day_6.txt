@@ -1,14 +1,22 @@
 #متوسط #اليوم_السادس 
 #Level_2 #Day_6
 
-#math #number_theory 
+#math #number_theory
 
+A. Co-prime Array
 https://codeforces.com/group/FqtJd4zMPb/contest/319078/problem/A
 
+D. Divisiblity of Differences
 https://codeforces.com/group/FqtJd4zMPb/contest/319078/problem/D 
 
+B. Relatively Prime Pairs
 https://codeforces.com/group/FqtJd4zMPb/contest/318929/problem/B
 
+B. Nirvana
 https://codeforces.com/problemset/problem/1143/B
 
+C. Trailing Loves (or L'oeufs?)
 https://codeforces.com/problemset/problem/1114/C
+
+B. Rock and Lever
+https://codeforces.com/problemset/problem/1420/B
