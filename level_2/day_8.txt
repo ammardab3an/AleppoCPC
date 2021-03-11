@@ -1,0 +1,27 @@
+#متوسط #اليوم_الثامن 
+#Level_2 #Day_8
+
+#complete_search #dynamic_programming #dp #practice_session
+
+
+AIBOHP - Aibohphobia
+https://www.spoj.com/problems/AIBOHP/en/
+
+BAT2 - BATMAN2
+https://www.spoj.com/problems/BAT2/
+
+EDIST - Edit distance
+https://www.spoj.com/problems/EDIST/
+
+DIEHARD - DIE HARD
+https://www.spoj.com/problems/DIEHARD/
+
+B. Vitamins
+https://codeforces.com/problemset/problem/1042/B
+
+10616 - Divisible Group Sums
+https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1557
+
+
+و كالعادة الاكواد  بالgithub, بالمسار التالي:
+AleppoCPC/level_2/subjects/complete search/dynamic programming/

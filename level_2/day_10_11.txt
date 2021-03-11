@@ -1,0 +1,47 @@
+#متوسط #اليوم_العاشر #اليوم_الحادي_عشر
+#Level_2 #Day_10 #Day_11
+
+#graph_theory #floyd_warshall #bellman_ford# #mst #dsu
+
+مراجع للغراف:
+
+CP3 - chapter 4 
+
+من قناة د مصطفى سعد
+https://www.youtube.com/watch?v=jzfcfQVBtKA&list=PLPt2dINI2MIb4OXlJ_EEwIDV9WVUpRQ5K
+https://www.youtube.com/watch?v=1n5XPFcvxds&list=PLqM7alHXFySEaZgcg7uRYJFBnYMLti-nh
+
+https://cp-algorithms.com/graph/all-pair-shortest-path-floyd-warshall.html
+https://cp-algorithms.com/graph/bellman_ford.html
+https://cp-algorithms.com/graph/mst_kruskal_with_dsu.html
+
+المسائل:
+EZDIJKST - Easy Dijkstra Problem
+https://www.spoj.com/problems/EZDIJKST/
+
+558 - Wormholes
+https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=499
+
+11228 - Transportation system
+https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=2169
+
+A. Learning Languages
+https://codeforces.com/problemset/problem/277/A
+
+A. Linova and Kingdom
+https://codeforces.com/problemset/problem/1336/A
+
+A. Maze
+https://codeforces.com/problemset/problem/377/A
+
+D. Lakes in Berland
+https://codeforces.com/problemset/problem/723/D
+
+C. k-Tree
+https://codeforces.com/problemset/problem/431/C
+
+D. A Simple Task
+https://codeforces.com/problemset/problem/11/D
+
+وكالعادة الاكواد عالgithub:
+

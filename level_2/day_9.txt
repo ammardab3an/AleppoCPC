@@ -1,0 +1,41 @@
+#متوسط #اليوم_التاسع
+#Level_2 #Day_9
+
+#graph_theory #dfs #bfs #dij
+
+مراجع للغراف:
+
+CP3 - chapter 4 
+
+من قناة د مصطفى سعد
+https://www.youtube.com/watch?v=jzfcfQVBtKA&list=PLPt2dINI2MIb4OXlJ_EEwIDV9WVUpRQ5K
+https://www.youtube.com/watch?v=1n5XPFcvxds&list=PLqM7alHXFySEaZgcg7uRYJFBnYMLti-nh
+
+https://cp-algorithms.com/graph/breadth-first-search.html
+https://cp-algorithms.com/graph/depth-first-search.html
+https://cp-algorithms.com/graph/dijkstra.html
+
+https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/
+
+
+اما بالنسبة للمسائل:
+LABYR1 - Labyrinth
+https://www.spoj.com/problems/LABYR1/
+
+KOZE - Sheep
+https://www.spoj.com/problems/KOZE/
+
+EZDIJKST - Easy Dijkstra Problem
+https://www.spoj.com/problems/EZDIJKST/
+
+A. Party
+https://codeforces.com/problemset/problem/115/A
+
+C. Kefa and Park
+https://codeforces.com/problemset/problem/580/C
+
+
+و كالعادة الاكواد  بالgithub, بالمسار التالي:
+AleppoCPC/level_2/subjects/graph
+
+هالمرة بالاضافة لاكواد مسائل اليوم في مسائل محلولة بنفس المجلد 
