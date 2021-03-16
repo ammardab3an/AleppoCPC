@@ -1,7 +1,7 @@
 #متوسط #اليوم_العاشر #اليوم_الحادي_عشر
 #Level_2 #Day_10 #Day_11
 
-#graph_theory #floyd_warshall #bellman_ford# #mst #dsu
+#graph_theory #floyd_warshall #bellman_ford #mst #dsu
 
 مراجع للغراف:
 
@@ -44,4 +44,4 @@ D. A Simple Task
 https://codeforces.com/problemset/problem/11/D
 
 وكالعادة الاكواد عالgithub:
-
+https://github.com/ammardab3an/AleppoCPC/tree/main/level_2/subjects/graph/day_10_11
